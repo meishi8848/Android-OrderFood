@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/boss_manage_bottom_menu_home"
+        android:title="订单管理"
+        app:showAsAction="always"
+        android:icon="@drawable/home"/>
+
+    <item
+        android:id="@+id/boss_manage_bottom_menu_addfood"
+        android:title="评论管理"
+        app:showAsAction="always"
+        android:icon="@drawable/add"/>
+
+    <item
+        android:id="@+id/boss_manage_bottom_menu_my"
+        android:title="结束订单"
+        app:showAsAction="always"
+        android:icon="@drawable/my"/>
+
+
+
+</menu>

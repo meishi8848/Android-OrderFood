@@ -1,0 +1,78 @@
+package com.example.orderfood.activity.boss.adapter;
+
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+
+import com.example.orderfood.Bean.FoodBean;
+import com.example.orderfood.R;
+import com.example.orderfood.activity.boss.ManageBossActivity;
+import com.example.orderfood.activity.boss.ManageBossAddFoodActivity;
+import com.example.orderfood.activity.boss.ManageBossUpdateFoodActivity;
+import com.example.orderfood.dao.FoodDao;
+
+import java.util.List;
+
+/**
+ * 用来显示商家商品的一个适配器
+ */
+public class FoodListAdapter extends ArrayAdapter<FoodBean> {
+
+    private List<FoodBean> list;
+
+    private Context context;
+
+    public FoodListAdapter(@NonNull Context context, List<FoodBean> list) {
+        super(context, R.layout.list_boss_food_list, list);
+        this.context=context;
+        this.list=list;
+    }
+
+    //显示列表数据的关键方法
+    @Override
+    public View getView(int position, View convertView, ViewGroup viewGroup){
+        if(convertView==null){//如果convertView为空，说明这是个新建视图或者没有可重用的视图
+            LayoutInflater inflater=LayoutInflater.from(getContext());
+            convertView=inflater.inflate(R.layout.list_boss_food_list,viewGroup,false);
+        }
+
+        FoodBean temp=list.get(position);
+
+        ImageView img=convertView.findViewById(R.id.boss_food_list_foodImg);
+        TextView name=convertView.findViewById(R.id.boss_food_list_name);
+        TextView sale=convertView.findViewById(R.id.boss_food_list_sale);
+        TextView price=convertView.findViewById(R.id.boss_food_list_price);
+        TextView des=convertView.findViewById(R.id.boss_food_list_des);
+
+        Bitmap bitmap= BitmapFactory.decodeFile(temp.getFoodImg());
+        img.setImageBitmap(bitmap);
+        name.setText(temp.getFoodName());
+        price.setText("价格："+temp.getFoodPrice());
+        des.setText("描述："+temp.getFoodDes());
+
+        int saleNum=FoodDao.getMouthSaleNum(temp.getFoodId());
+        sale.setText("月销："+String.valueOf(saleNum));
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), ManageBossUpdateFoodActivity.class);
+                intent.putExtra("food",temp);
+                getContext().startActivity(intent);
+            }
+        });
+
+        return convertView;
+    }
+
+}

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/back_round">
+
+        <ImageView
+            android:id="@+id/boss_food_list_foodImg"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/login"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="7dp"
+            android:scaleType="centerCrop"
+            android:paddingLeft="5dp"
+            android:background="@drawable/img_round"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:id="@+id/boss_food_list_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="东北麻辣烫，烫出新鲜"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="left"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/boss_food_list_sale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="月销售：300份"
+                android:gravity="left"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/boss_food_list_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="价格：19.19元"
+                android:gravity="left"
+                android:layout_marginTop="5dp"
+                android:textColor="#D32F2F"/>
+
+            <TextView
+                android:id="@+id/boss_food_list_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="描述：来自寒冽凛冬的巧思"
+                android:gravity="left"
+                android:layout_marginTop="5dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    tools:context=".MainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_gravity="center_horizontal|center_vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login"
+            app:tint="@color/ThemeRed"
+            android:layout_marginTop="45dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="豹 式 外 卖"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="#000000"
+            android:gravity="center_vertical|center_horizontal"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="简单生活，让美食触手可及"
+            android:textSize="15sp"
+            android:gravity="center_vertical|center_horizontal"
+            />
+
+        <EditText
+            android:id="@+id/login_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入账号"
+            android:layout_marginTop="50dp"
+            />
+
+        <EditText
+            android:id="@+id/login_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入密码"
+            android:layout_marginTop="10dp"
+            android:inputType="textPassword"
+            />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/login_sj"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="商家"
+                android:layout_weight="1"
+                />
+
+            <RadioButton
+                android:id="@+id/login_yh"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="用户"
+                android:layout_weight="1"
+                />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/login_lg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/ThemeRed"
+            android:text="登录"
+            android:textColor="#FFFFFF"
+            android:foreground="?android:attr/selectableItemBackground"
+            />
+
+        <Button
+            android:id="@+id/reg_boss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/ThemeRed"
+            android:text="注册商家"
+            android:textColor="#FFFFFF"
+            android:foreground="?android:attr/selectableItemBackground"
+            />
+
+        <Button
+            android:id="@+id/reg_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/ThemeRed"
+            android:text="注册用户"
+            android:textColor="#FFFFFF"
+            android:foreground="?android:attr/selectableItemBackground"
+            />
+
+    </LinearLayout>
+
+</ScrollView>
+
+
+
+
+
+

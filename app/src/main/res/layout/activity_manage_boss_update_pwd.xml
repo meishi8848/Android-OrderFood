@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bac"
+    android:layout_gravity="center_horizontal|center_vertical"
+    tools:context=".activity.boss.ManageBossUpdatePwdActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/boss_manage_update_pwd_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="修改账号密码"
+        app:titleTextColor="@color/white"
+        android:background="@color/ThemeRed"
+        app:navigationIcon="@drawable/back"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center_horizontal|center_vertical">
+
+            <EditText
+                android:id="@+id/boss_manage_update_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入新密码"
+                android:layout_marginTop="10dp"
+                android:padding="12dp"
+                android:inputType="textPassword"
+                android:background="@android:drawable/edit_text"
+                />
+
+            <EditText
+                android:id="@+id/boss_manage_update_pwd_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请确认新密码"
+                android:layout_marginTop="10dp"
+                android:padding="12dp"
+                android:inputType="textPassword"
+                android:background="@android:drawable/edit_text"
+                />
+
+            <Button
+                android:id="@+id/boss_manage_updatePwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/ThemeRed"
+                android:text="修改"
+                android:textColor="#FFFFFF"
+                android:foreground="?android:attr/selectableItemBackground"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

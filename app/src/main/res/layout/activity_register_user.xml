@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:id="@+id/main"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical"
+     tools:context=".activity.user.RegisterUserActivity">
+
+
+     <androidx.appcompat.widget.Toolbar
+          android:id="@+id/register_user_toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:title="注册用户"
+          app:titleTextColor="@color/white"
+          android:background="@color/ThemeRed"
+          app:navigationIcon="@drawable/back"
+          />
+
+     <ScrollView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+          <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:layout_marginLeft="30dp"
+               android:layout_marginRight="30dp"
+               android:layout_gravity="center_horizontal|center_vertical">
+
+               <ImageView
+                    android:id="@+id/register_user_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:src="@drawable/upimg"
+                    android:layout_marginTop="45dp">
+               </ImageView>
+
+               <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="豹 式 外 卖"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical|center_horizontal"
+                    />
+
+               <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="简单生活，让美食触手可及"
+                    android:textSize="15sp"
+                    android:gravity="center_vertical|center_horizontal"
+                    />
+
+               <EditText
+                    android:id="@+id/Reg_User_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入账号名"
+                    android:layout_marginTop="50dp"
+                    />
+
+               <EditText
+                    android:id="@+id/Reg_User_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入密码"
+                    android:layout_marginTop="10dp"
+                    android:inputType="textPassword"
+               />
+
+               <EditText
+                    android:id="@+id/Reg_User_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入昵称"
+                    android:layout_marginTop="10dp"
+                    />
+
+               <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <RadioButton
+                         android:id="@+id/Reg_User_man"
+                         android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:text="男"
+                         android:layout_weight="1"
+                         />
+
+                    <RadioButton
+                        android:id="@+id/Reg_User_woman"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="女"
+                        android:layout_weight="1"
+                        />
+
+               </RadioGroup>
+
+               <EditText
+                    android:id="@+id/Reg_User_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入家庭住址"
+                    android:inputType="textMultiLine"
+                    android:layout_marginTop="10dp"
+
+                    android:gravity="top"
+                    android:minLines="3"
+                    android:maxLines="3"
+                    android:scrollbars="vertical"
+                    android:background="@android:drawable/edit_text"
+                    />
+
+               <EditText
+                    android:id="@+id/Reg_User_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入联系方式"
+                    android:layout_marginTop="10dp"
+                    />
+
+               <Button
+                    android:id="@+id/Reg_User_reg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/ThemeRed"
+                    android:text="注册用户"
+                    android:textColor="#FFFFFF"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    />
+
+          </LinearLayout>
+
+     </ScrollView>
+
+</LinearLayout>

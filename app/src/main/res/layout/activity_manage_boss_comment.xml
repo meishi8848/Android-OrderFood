@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.boss.ManageBossCommentActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/manage_boss_my_comment_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationIcon="@drawable/back"
+        android:background="@color/ThemeRed"
+        app:title="店铺评论"
+        app:titleTextColor="@color/white"
+        android:padding="5dp"/>
+
+    <ListView
+        android:id="@+id/manage_boss_my_comment_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="10dp"
+        android:background="#F5F5F5"
+        android:layout_gravity="center"
+        android:divider="@android:color/transparent"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>

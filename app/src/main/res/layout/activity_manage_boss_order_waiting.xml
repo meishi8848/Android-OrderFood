@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.boss.ManageBossOrderWaitingActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/Manage_Boss_My_Waiting_Order_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationIcon="@drawable/back"
+        android:background="@color/ThemeRed"
+        android:padding="10dp">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/Manage_Boss_My_Waiting_Order_Search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle_background"
+            android:layout_marginRight="20dp"
+            app:iconifiedByDefault="false"
+            app:queryHint="请输入商品名称或用户名"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+        <ListView
+            android:id="@+id/Manage_Boss_My_Waiting_Order_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dividerHeight="10dp"
+            android:background="#F5F5F5"
+            android:layout_gravity="center"
+            android:divider="@android:color/transparent"
+            android:layout_marginTop="10dp"/>
+
+</LinearLayout>
