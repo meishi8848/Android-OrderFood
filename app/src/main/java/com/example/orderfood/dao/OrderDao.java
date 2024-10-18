@@ -94,4 +94,26 @@ public class OrderDao {
         }
     }
 
+    public static List<OrderBean> queryAllOrdersFinished(String account){
+        String sql="SELECT * FROM d_order WHERE s_boss_id=? AND s_order_state!=? ORDER BY strftime('%Y-%m-%d %H:%M:%S',s_order_time) DESC";
+        String data[]={account,"1"};
+        Cursor cursor=db.rawQuery(sql,data);
+        List<OrderBean> orderBeanList=new ArrayList<>();
+        while(cursor.moveToNext()){
+
+            String order_idT=Tools.getResultString(cursor,"s_order_id");
+            String order_timeT=Tools.getResultString(cursor,"s_order_time");
+            String boss_idT=Tools.getResultString(cursor,"s_boss_id");
+            String customer_idT=Tools.getResultString(cursor,"s_customer_id");
+            String detail_idT=Tools.getResultString(cursor,"s_order_detail_id");
+            String order_stateT=Tools.getResultString(cursor,"s_order_state");
+            String order_addressT=Tools.getResultString(cursor,"s_order_address");
+
+            OrderBean orderBean=new OrderBean(order_idT,order_timeT,boss_idT,customer_idT,order_stateT,order_addressT,detail_idT);
+
+            orderBeanList.add(orderBean);
+        }
+        return orderBeanList;
+    }
+
 }

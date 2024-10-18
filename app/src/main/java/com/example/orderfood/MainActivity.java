@@ -18,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.orderfood.activity.boss.ManageBossActivity;
 import com.example.orderfood.activity.boss.ManageBossCommentActivity;
+import com.example.orderfood.activity.boss.ManageBossFinishOrderActivity;
 import com.example.orderfood.activity.boss.ManageBossOrderWaitingActivity;
 import com.example.orderfood.activity.boss.RegisterBossActivity;
 import com.example.orderfood.activity.user.RegisterUserActivity;
@@ -43,12 +44,6 @@ public class MainActivity extends AppCompatActivity {
         //实现数据账号共享
         SharedPreferences sharedPreferences=getSharedPreferences("data", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit=sharedPreferences.edit();
-        edit.putString("account","root");
-        edit.apply();
-
-        //Intent intent=new Intent(MainActivity.this, ManageBossActivity.class);
-        Intent intent=new Intent(MainActivity.this, ManageBossCommentActivity.class);
-        startActivity(intent);
 
         RadioButton sjRadio=findViewById(R.id.login_sj);
         sjRadio.setChecked(true);//让运行时候商家单选按钮默认选择
@@ -91,9 +86,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
                 }
                 else{
+                    edit.putString("account",id);
+                    edit.apply();
                     if(role.isChecked()&&AdminDao.loginBoss(id,pwd)){
                         //确认为商家用户
                         Toast.makeText(MainActivity.this, "登录成功，请稍等", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(MainActivity.this, ManageBossActivity.class);
+                        startActivity(intent);
                     }
                     else if(!role.isChecked()&&AdminDao.loginUser(id,pwd)){
                         //否则是顾客用户

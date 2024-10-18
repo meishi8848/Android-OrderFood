@@ -34,7 +34,7 @@ public class ManageHomeBossFragment extends Fragment {
 
         //适配器
         ListView listView=root_view.findViewById(R.id.Manage_Boss_Home_listview);
-        List<FoodBean> list=FoodDao.queryAllFoods();
+        List<FoodBean> list=FoodDao.queryAllFoods(Tools.getOnAccount(getContext()));
         FoodListAdapter adapter=new FoodListAdapter(getContext(),list);
         if(list==null||list.size()==0){
             listView.setAdapter(null);

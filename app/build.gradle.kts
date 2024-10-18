@@ -40,6 +40,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     implementation(libs.legacy.support.v4)
     implementation(libs.recyclerview)
+    implementation(libs.filament.android)
     androidTestImplementation("com.github.bumptech.glide:compiler:4.12.0")
 
     implementation(libs.appcompat)

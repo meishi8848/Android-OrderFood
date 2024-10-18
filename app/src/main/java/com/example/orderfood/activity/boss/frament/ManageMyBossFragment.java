@@ -21,6 +21,7 @@ import com.example.orderfood.Bean.FoodBean;
 import com.example.orderfood.R;
 import com.example.orderfood.activity.boss.ManageBossActivity;
 import com.example.orderfood.activity.boss.ManageBossCommentActivity;
+import com.example.orderfood.activity.boss.ManageBossFinishOrderActivity;
 import com.example.orderfood.activity.boss.ManageBossOrderWaitingActivity;
 import com.example.orderfood.activity.boss.ManageBossUpdateMesActivity;
 import com.example.orderfood.activity.boss.ManageBossUpdatePwdActivity;
@@ -112,6 +113,15 @@ public class ManageMyBossFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(), ManageBossCommentActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView orderFinish=root_view.findViewById(R.id.boss_manage_my_finishedOrderManage);
+        orderFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), ManageBossFinishOrderActivity.class);
                 startActivity(intent);
             }
         });

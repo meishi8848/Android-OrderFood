@@ -19,7 +19,7 @@ import com.example.orderfood.until.FileImgUntil;
  */
 public class DBUntil extends SQLiteOpenHelper {//ALT＋回车
 
-    private static final int version=19;//版本号，每次更改表结构都需要加1，否则不生效
+    private static final int version=20;//版本号，每次更改表结构都需要加1，否则不生效
     private static final String databaseName="db_takeaway.db";//数据库名称必须以db结尾
     private Context context;
     public static SQLiteDatabase con;//链接数据库的链接

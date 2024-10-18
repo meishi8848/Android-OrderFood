@@ -20,9 +20,9 @@ import java.util.UUID;
 public class FoodDao {
     public static SQLiteDatabase db= DBUntil.con;
 
-    public static List<FoodBean> queryAllFoods() {
+    public static List<FoodBean> queryAllFoods(String account) {
         List<FoodBean> list=new ArrayList<>();
-        Cursor cursor=db.rawQuery("select * From d_food",null);
+        Cursor cursor=db.rawQuery("select * From d_food WHERE s_boss_id=?",new String[]{account});
         while(cursor.moveToNext()){
             @SuppressLint("Range") String id_food=cursor.getString(cursor.getColumnIndex("s_food_id"));
             @SuppressLint("Range") String id_boss=cursor.getString(cursor.getColumnIndex("s_boss_id"));

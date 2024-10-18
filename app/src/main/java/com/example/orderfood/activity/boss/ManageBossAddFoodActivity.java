@@ -4,6 +4,7 @@ package com.example.orderfood.activity.boss;
  */
 import androidx.appcompat.widget.Toolbar;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -56,8 +57,8 @@ public class ManageBossAddFoodActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
-                //finish();//都是返回函数
+                Intent intent=new Intent(ManageBossAddFoodActivity.this,ManageBossActivity.class);
+                startActivity(intent);
             }
         });
 

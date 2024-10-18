@@ -21,6 +21,8 @@ import com.example.orderfood.activity.boss.ManageBossUpdateFoodActivity;
 import com.example.orderfood.dao.AdminDao;
 import com.example.orderfood.dao.FoodDao;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -58,49 +60,29 @@ public class CommentListAdapter extends ArrayAdapter<CommentBean> {
 
         String con[]={"非常差","比较差","一般","比较满意","非常满意"};//代表5个满意程度
         TextView satisfy=convertView.findViewById(R.id.comment_satisfy);
+        int score=Integer.valueOf(temp.getCommentScore());
+        satisfy.setText(con[score-1]);
+
+        int icoId[]={R.id.comment_review_star1,R.id.comment_review_star2,R.id.comment_review_star3,R.id.comment_review_star4,R.id.comment_review_star5};
+        for(int i = 0; i< score; i++){
+            ImageView tem=convertView.findViewById(icoId[i]);
+            tem.setImageResource(R.drawable.xx);
+        }
+        for(int i = score; i< 5; i++){
+            ImageView tem=convertView.findViewById(icoId[i]);
+            tem.setImageResource(R.drawable.wxx);
+        }
+
+        TextView content=convertView.findViewById(R.id.comment_content);
+        content.setText(temp.getCommentContent());
 
         TextView time=convertView.findViewById(R.id.comment_time);
         time.setText(temp.getCommentTime());
 
-        int icoId[]={R.id.comment_review_star1,R.id.comment_review_star2,R.id.comment_review_star3,R.id.comment_review_star4,R.id.comment_review_star5};
-        for(int i:icoId){
-            View finalConvertView = convertView;
-            finalConvertView.findViewById(i).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int idT=v.getId();
-                    int select=1;
-                    if(idT==icoId[0]){
-                        select=1;
-                    }
-                    if(idT==icoId[1]){
-                        select=2;
-                    }
-                    if(idT==icoId[2]){
-                        select=3;
-                    }
-                    if(idT==icoId[3]){
-                        select=4;
-                    }
-                    if(idT==icoId[4]){
-                        select=5;
-                    }
-                    satisfy.setText(con[select-1]);
-                    for(int i = 0; i< select; i++){
-                        ImageView temp=finalConvertView.findViewById(icoId[i]);
-                        temp.setImageResource(R.drawable.xx);
-                    }
-                    for(int i = select; i< 5; i++){
-                        ImageView temp=finalConvertView.findViewById(icoId[i]);
-                        temp.setImageResource(R.drawable.wxx);
-                    }
-                }
-            });
-        }
+        ImageView imgFood=convertView.findViewById(R.id.comment_img_food);
+        imgFood.setImageBitmap(BitmapFactory.decodeFile(temp.getCommentImg()));
 
-        TextView sale=convertView.findViewById(R.id.boss_food_list_sale);
-        TextView price=convertView.findViewById(R.id.boss_food_list_price);
-        TextView des=convertView.findViewById(R.id.boss_food_list_des);
+        //下面被注释的代码可以在用户评论模块用到，暂时不删
 
         return convertView;
     }

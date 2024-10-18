@@ -60,12 +60,11 @@ public class ManageBossUpdateFoodActivity extends AppCompatActivity {
         //实现返回功能
         Toolbar toolbar=findViewById(R.id.boss_manage_updateFood_back);
         setSupportActionBar(toolbar);
-        //返回有两种方式
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
-                //finish();//都是返回函数
+                Intent intent=new Intent(ManageBossUpdateFoodActivity.this,ManageBossActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -80,6 +79,8 @@ public class ManageBossUpdateFoodActivity extends AppCompatActivity {
         Button addBtn=findViewById(R.id.boss_manage_updateFood_addButton);
 
         //将商品原有的图片设置成默认图片
+        Bitmap bitmap=BitmapFactory.decodeFile(food.getFoodImg());
+        imgText.setImageBitmap(bitmap);
         Drawable drawable = imgText.getDrawable();//获取当前头像
         Bitmap defaultDrawable = ((BitmapDrawable) drawable).getBitmap();//获取这个图片的二进制文件 获取默认头像
 
@@ -103,9 +104,6 @@ public class ManageBossUpdateFoodActivity extends AppCompatActivity {
                 openGallery(v);
             }
         });
-
-        Bitmap bitmap= BitmapFactory.decodeFile(food.getFoodImg());
-        imgText.setImageBitmap(bitmap);//更换头像
 
         nameText.setText(food.getFoodName());
         priceText.setText(food.getFoodPrice());

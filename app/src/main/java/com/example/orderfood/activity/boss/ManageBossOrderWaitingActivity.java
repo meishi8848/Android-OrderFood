@@ -84,7 +84,6 @@ public class ManageBossOrderWaitingActivity extends AppCompatActivity {
 
         Toolbar toolbar=findViewById(R.id.Manage_Boss_My_Waiting_Order_bar);
         setSupportActionBar(toolbar);
-        //返回有两种方式
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
