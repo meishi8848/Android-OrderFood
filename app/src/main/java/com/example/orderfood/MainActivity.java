@@ -21,6 +21,7 @@ import com.example.orderfood.activity.boss.ManageBossCommentActivity;
 import com.example.orderfood.activity.boss.ManageBossFinishOrderActivity;
 import com.example.orderfood.activity.boss.ManageBossOrderWaitingActivity;
 import com.example.orderfood.activity.boss.RegisterBossActivity;
+import com.example.orderfood.activity.user.ManageUserActivity;
 import com.example.orderfood.activity.user.RegisterUserActivity;
 import com.example.orderfood.dao.AdminDao;
 import com.example.orderfood.db.DBUntil;
@@ -40,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
         DBUntil dbUntil=new DBUntil(this);
         DBUntil.con = dbUntil.getWritableDatabase();
+
+        Intent intent=new Intent(MainActivity.this, ManageUserActivity.class);
+        startActivity(intent);
 
         //实现数据账号共享
         SharedPreferences sharedPreferences=getSharedPreferences("data", Context.MODE_PRIVATE);
@@ -97,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
                     else if(!role.isChecked()&&AdminDao.loginUser(id,pwd)){
                         //否则是顾客用户
                         Toast.makeText(MainActivity.this, "登录成功，请稍等", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(MainActivity.this, ManageUserActivity.class);
+                        startActivity(intent);
                     }
                     else{
                         Toast.makeText(MainActivity.this, "账号或密码错误，请重新输入", Toast.LENGTH_SHORT).show();

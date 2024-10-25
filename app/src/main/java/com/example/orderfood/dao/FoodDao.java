@@ -20,6 +20,30 @@ import java.util.UUID;
 public class FoodDao {
     public static SQLiteDatabase db= DBUntil.con;
 
+    public static List<FoodBean> queryAllFoods() {
+        List<FoodBean> list=new ArrayList<>();
+        Cursor cursor=db.rawQuery("select * From d_food",null);
+        while(cursor.moveToNext()){
+            @SuppressLint("Range") String id_food=cursor.getString(cursor.getColumnIndex("s_food_id"));
+            @SuppressLint("Range") String id_boss=cursor.getString(cursor.getColumnIndex("s_boss_id"));
+            @SuppressLint("Range") String name_food=cursor.getString(cursor.getColumnIndex("s_food_name"));
+            @SuppressLint("Range") String des_food=cursor.getString(cursor.getColumnIndex("s_food_describe"));
+            @SuppressLint("Range") String price_food=cursor.getString(cursor.getColumnIndex("s_food_price"));
+            @SuppressLint("Range") String img_food=cursor.getString(cursor.getColumnIndex("s_food_img"));
+
+            FoodBean foodBean=new FoodBean();
+            foodBean.setFoodId(id_food);
+            foodBean.setBossId(id_boss);
+            foodBean.setFoodName(name_food);
+            foodBean.setFoodDes(des_food);
+            foodBean.setFoodPrice(price_food);
+            foodBean.setFoodImg(img_food);
+            list.add(foodBean);
+        }
+
+        return list;
+    }
+
     public static List<FoodBean> queryAllFoods(String account) {
         List<FoodBean> list=new ArrayList<>();
         Cursor cursor=db.rawQuery("select * From d_food WHERE s_boss_id=?",new String[]{account});
@@ -49,6 +73,32 @@ public class FoodDao {
         String data[]={boss_id,titleL};
         List<FoodBean> list=new ArrayList<>();
         Cursor cursor=db.rawQuery("select * From d_food WHERE s_boss_id=? AND s_food_name like ?",data);
+        while(cursor.moveToNext()){
+            @SuppressLint("Range") String id_food=cursor.getString(cursor.getColumnIndex("s_food_id"));
+            @SuppressLint("Range") String id_boss=cursor.getString(cursor.getColumnIndex("s_boss_id"));
+            @SuppressLint("Range") String name_food=cursor.getString(cursor.getColumnIndex("s_food_name"));
+            @SuppressLint("Range") String des_food=cursor.getString(cursor.getColumnIndex("s_food_describe"));
+            @SuppressLint("Range") String price_food=cursor.getString(cursor.getColumnIndex("s_food_price"));
+            @SuppressLint("Range") String img_food=cursor.getString(cursor.getColumnIndex("s_food_img"));
+
+            FoodBean foodBean=new FoodBean();
+            foodBean.setFoodId(id_food);
+            foodBean.setBossId(id_boss);
+            foodBean.setFoodName(name_food);
+            foodBean.setFoodDes(des_food);
+            foodBean.setFoodPrice(price_food);
+            foodBean.setFoodImg(img_food);
+            list.add(foodBean);
+        }
+
+        return list;
+    }
+
+    public static List<FoodBean> queryFoodListUser(String title) {
+        String titleL="%"+title+"%";
+        String data[]={titleL};
+        List<FoodBean> list=new ArrayList<>();
+        Cursor cursor=db.rawQuery("select * From d_food WHERE s_food_name like ?",data);
         while(cursor.moveToNext()){
             @SuppressLint("Range") String id_food=cursor.getString(cursor.getColumnIndex("s_food_id"));
             @SuppressLint("Range") String id_boss=cursor.getString(cursor.getColumnIndex("s_boss_id"));

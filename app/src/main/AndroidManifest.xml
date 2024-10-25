@@ -13,6 +13,12 @@
         android:theme="@style/Theme.OrderFood"
         tools:targetApi="31">
         <activity
+            android:name=".activity.user.ManageUserBuyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.user.ManageUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.boss.ManageBossFinishOrderActivity"
             android:exported="false" />
         <activity

@@ -43,6 +43,9 @@ dependencies {
     implementation(libs.filament.android)
     androidTestImplementation("com.github.bumptech.glide:compiler:4.12.0")
 
+    // https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2
+    implementation("com.alibaba.fastjson2:fastjson2:2.0.53")
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

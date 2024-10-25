@@ -19,7 +19,7 @@ public class CommentDao {
     public static List<CommentBean> getCommentByBossId(String id){
         List<CommentBean> list=new ArrayList<>();
         Cursor cursor=db.rawQuery("select * From d_comment where s_comment_boss_id=?",new String[]{id});
-        if(cursor.moveToNext()) {
+        while(cursor.moveToNext()) {
             CommentBean commentBean = new CommentBean();
             String commentId=Tools.getResultString(cursor,"s_comment_id");
             commentBean.setCommentId(commentId);
@@ -47,4 +47,22 @@ public class CommentDao {
 
         return list;
     }
+
+    /**
+     * 获取商家评分
+     * @param account
+     * @return
+     */
+    public static String getAvgScore(String account){
+        String sql="SELECT avg(s_comment_score) as score FROM d_comment WHERE s_comment_boss_id=?";
+        Cursor rs=db.rawQuery(sql,new String[]{account});
+        if(rs.moveToNext()){
+            String result=Tools.getResultString(rs,"score");
+            if(result==null)
+                return "0";
+            return result;
+        }
+        return "0";
+    }
+
 }

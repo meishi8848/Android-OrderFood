@@ -19,7 +19,7 @@ import com.example.orderfood.until.FileImgUntil;
  */
 public class DBUntil extends SQLiteOpenHelper {//ALT＋回车
 
-    private static final int version=20;//版本号，每次更改表结构都需要加1，否则不生效
+    private static final int version=23;//版本号，每次更改表结构都需要加1，否则不生效
     private static final String databaseName="db_takeaway.db";//数据库名称必须以db结尾
     private Context context;
     public static SQLiteDatabase con;//链接数据库的链接
@@ -81,6 +81,11 @@ public class DBUntil extends SQLiteOpenHelper {//ALT＋回车
         db.execSQL("insert into d_food(s_food_id,s_boss_id,s_food_name,s_food_describe,s_food_price,s_food_img)"+" values(?,?,?,?,?,?)",
                 new Object[]{"2","root","东北烤冷面","不吃后悔的烤冷面","19.49",FoodImg1});
 
+        String FoodImg2=FileImgUntil.getImgName();//获取食物的图片名称
+        FileImgUntil.saveSystemImgToPath(context,R.drawable.dumpling,FoodImg2);
+        db.execSQL("insert into d_food(s_food_id,s_boss_id,s_food_name,s_food_describe,s_food_price,s_food_img)"+" values(?,?,?,?,?,?)",
+                new Object[]{"3","root","饺子","家的味道","8.88",FoodImg2});
+
         db.execSQL("drop table if exists d_order");//如果这表存在则删除
         //订单编号，订单时间，购买人id，商家id，订单状态，收货地址，商品详情id
         db.execSQL("create table d_order(s_order_id varchar(20) primary key," +
@@ -130,6 +135,19 @@ public class DBUntil extends SQLiteOpenHelper {//ALT＋回车
                 "s_comment_img varchar(255))");//存储图片路径
         db.execSQL("insert into d_comment(s_comment_id,s_comment_customer_id,s_comment_boss_id,s_comment_content,s_comment_time,s_comment_score,s_comment_img)"+" values(?,?,?,?,?,?,?)",
                 new Object[]{"1","admin","root","非常的新鲜，非常的美味","2042-01-09 11:45","5",FoodImg1});
+
+        db.execSQL("insert into d_comment(s_comment_id,s_comment_customer_id,s_comment_boss_id,s_comment_content,s_comment_time,s_comment_score,s_comment_img)"+" values(?,?,?,?,?,?,?)",
+                new Object[]{"2","admin","root","这次点的东西比较一般","2042-01-14 11:45","3",FoodImg});
+
+        db.execSQL("drop table if exists d_receiveAddress");//如果这表存在则删除
+        //地址id，顾客id，收货人姓名，收货地址，联系电话
+        db.execSQL("create table d_receiveAddress(s_address_id varchar(20) primary key," +
+                "s_customer_id varchar(20)," +
+                "s_customer_name varchar(20)," +
+                "s_customer_address varchar(200)," +
+                "s_customer_phone varchar(20))");//存储图片路径
+        db.execSQL("insert into d_receiveAddress(s_address_id,s_customer_id,s_customer_name,s_customer_address,s_customer_phone)"+" values(?,?,?,?,?)",
+                new Object[]{"home","admin","李同学","上海市，某会员餐厅附近","19111459191"});
 
         db.execSQL("PRAGMA foreign_keys = true");
 
