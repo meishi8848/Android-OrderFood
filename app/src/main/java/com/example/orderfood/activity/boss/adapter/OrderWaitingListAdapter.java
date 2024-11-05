@@ -69,16 +69,16 @@ public class OrderWaitingListAdapter extends ArrayAdapter<OrderBean> {
         TextView time=convertView.findViewById(R.id.list_boss_waiting_order_list_time);
         time.setText(temp.getOrder_time());
 
-//        String addressT[]=temp.getOrder_address().split("-");
+        String addressT[]=temp.getOrder_address().split("-");
 
         TextView receiver=convertView.findViewById(R.id.list_boss_waiting_order_list_receiver);
-        receiver.setText(userBean.getU_Name());//该地方由于数据表没有收货人真姓名，故只能使用昵称代替
+        receiver.setText(addressT[0]);//该地方由于数据表没有收货人真姓名，故只能使用昵称代替
 
         TextView address=convertView.findViewById(R.id.list_boss_waiting_order_list_address);
-        address.setText(temp.getOrder_address());
+        address.setText(addressT[1]);
 
         TextView phone=convertView.findViewById(R.id.list_boss_waiting_order_list_phone);
-        phone.setText(userBean.getU_Phone());
+        phone.setText(addressT[2]);
 
         RecyclerView foodList=convertView.findViewById(R.id.list_boss_waiting_order_list_foodList);
 

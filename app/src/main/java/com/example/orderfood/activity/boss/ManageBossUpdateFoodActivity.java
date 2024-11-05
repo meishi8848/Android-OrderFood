@@ -69,7 +69,7 @@ public class ManageBossUpdateFoodActivity extends AppCompatActivity {
         });
 
         Intent intent=getIntent();
-        FoodBean food = intent.getSerializableExtra("food", FoodBean.class);
+        FoodBean food = (FoodBean) intent.getSerializableExtra("food");
         food_id=food.getFoodId();
 
         ImageView imgText=findViewById(R.id.boss_manage_updateFood_img);

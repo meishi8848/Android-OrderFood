@@ -24,9 +24,12 @@ public class ReceiveAddressListAdapter extends RecyclerView.Adapter<ReceiveAddre
 
     private List<AddressBean> list;
 
-    public ReceiveAddressListAdapter(List<AddressBean> list) {
+    private View parent;
+
+    public ReceiveAddressListAdapter(View parent, List<AddressBean> list) {
         //super(context, R.layout.list_boss_waiting_order_list, list);
         this.list=list;
+        this.parent=parent;
     }
 
     @NonNull
@@ -47,6 +50,23 @@ public class ReceiveAddressListAdapter extends RecyclerView.Adapter<ReceiveAddre
 
         holder.phone.setText(temp.getCustomerPhone());
 
+        TextView receiver=parent.findViewById(R.id.user_buy_food_pay_receiver);
+        receiver.setText("");
+
+        TextView address=parent.findViewById(R.id.user_buy_food_pay_address);
+        address.setText("");
+
+        TextView phone=parent.findViewById(R.id.user_buy_food_pay_phone);
+        phone.setText("");
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                receiver.setText(temp.getCustomerName());
+                address.setText(temp.getCustomerAddress());
+                phone.setText(temp.getCustomerPhone());
+            }
+        });
     }
 
     @Override
@@ -56,11 +76,13 @@ public class ReceiveAddressListAdapter extends RecyclerView.Adapter<ReceiveAddre
 
     static class ReceiveAddressViewHolder extends  RecyclerView.ViewHolder{
         TextView consignee,address,phone;
+        View itemView;
         public ReceiveAddressViewHolder(@NonNull View itemView) {
             super(itemView);
             consignee=itemView.findViewById(R.id.list_user_address_receiver);
             address=itemView.findViewById(R.id.list_user_address_address);
             phone=itemView.findViewById(R.id.list_user_address_phone);
+            this.itemView=itemView;
         }
     }
 

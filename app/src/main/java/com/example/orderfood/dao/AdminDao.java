@@ -63,6 +63,29 @@ public class AdminDao {
     }
 
     /**
+     * 更新普通用户个人信息
+     * @param id
+     * @param name
+     * @param sex
+     * @param address
+     * @param phone
+     * @param head
+     * @return
+     */
+    public static int UpdateCustomerUser(String id,String name,String sex,String address,String phone,String head){
+        String data[]={name,sex,address,phone,head,id};
+
+        try{
+            db.execSQL("UPDATE d_user set s_name=?,s_sex=?,s_address=?,s_phone=?,s_img=? WHERE s_id=? ",
+                    data);
+            return 1;
+        }catch (Exception e){
+            return 0;
+        }
+
+    }
+
+    /**
      * 登录顾客用户
      * @param id
      * @param pwd
@@ -75,6 +98,7 @@ public class AdminDao {
         while(result.moveToNext()){
             return true;
         }
+        result.close();
         return false;
     }
 
@@ -91,6 +115,7 @@ public class AdminDao {
         while(result.moveToNext()){
             return true;
         }
+        result.close();
         return false;
     }
 
@@ -115,6 +140,7 @@ public class AdminDao {
 
             return bossBean;
         }
+        result.close();
         return null;
     }
 
@@ -154,6 +180,25 @@ public class AdminDao {
     }
 
     /**
+     * 修改顾客用户密码
+     * @param id
+     * @param pwd
+     * @return
+     */
+    public static int UpdateCustomerUserPwd(String id,String pwd){
+        String data[]={pwd,id};
+
+        try{
+            db.execSQL("update d_user set s_pwd=? WHERE s_id=?",
+                    data);
+            return 1;
+        }catch (Exception e){
+            return 0;
+        }
+
+    }
+
+    /**
      * 获取顾客用户的相关信息
      * @param account
      * @return
@@ -175,6 +220,7 @@ public class AdminDao {
 
             return userBean;
         }
+        result.close();
         return null;
     }
 

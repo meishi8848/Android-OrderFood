@@ -19,7 +19,7 @@ import com.example.orderfood.until.FileImgUntil;
  */
 public class DBUntil extends SQLiteOpenHelper {//ALT＋回车
 
-    private static final int version=23;//版本号，每次更改表结构都需要加1，否则不生效
+    private static final int version=25;//版本号，每次更改表结构都需要加1，否则不生效
     private static final String databaseName="db_takeaway.db";//数据库名称必须以db结尾
     private Context context;
     public static SQLiteDatabase con;//链接数据库的链接
@@ -96,13 +96,13 @@ public class DBUntil extends SQLiteOpenHelper {//ALT＋回车
                 "s_order_address varchar(200)," +
                 "s_order_detail_id varchar(20))");//存储图片路径
         db.execSQL("insert into d_order(s_order_id,s_order_time,s_customer_id,s_boss_id,s_order_state,s_order_address,s_order_detail_id)"+" values(?,?,?,?,?,?,?)",
-                new Object[]{"1","2024-10-14 13:10:00","admin","root","1","集美大道199号","1"});
+                new Object[]{"1","2024-10-14 13:10:00","admin","root","1","田同学-集美大道199号-13299908712","1"});
 
         db.execSQL("insert into d_order(s_order_id,s_order_time,s_customer_id,s_boss_id,s_order_state,s_order_address,s_order_detail_id)"+" values(?,?,?,?,?,?,?)",
-                new Object[]{"2","2024-10-16 13:10:00","admin","root","1","集美大道199号","2"});
+                new Object[]{"2","2024-10-16 13:10:00","admin","root","1","*修院-集美大道199号-13191911451","2"});
 
         db.execSQL("insert into d_order(s_order_id,s_order_time,s_customer_id,s_boss_id,s_order_state,s_order_address,s_order_detail_id)"+" values(?,?,?,?,?,?,?)",
-                new Object[]{"3","2024-10-16 13:10:00","admin","root","1","集美大道199号","3"});
+                new Object[]{"3","2024-10-16 13:10:00","admin","root","1","德同学-集美大道199号-14541996728","3"});
 
         db.execSQL("drop table if exists d_order_detail");//如果这表存在则删除
         db.execSQL("create table d_order_detail(s_order_detail_id varchar(20)," +
@@ -122,7 +122,7 @@ public class DBUntil extends SQLiteOpenHelper {//ALT＋回车
                 new Object[]{"2","2","东北烤冷面","不吃后悔的麻辣烫","19.49","15",FoodImg1});
 
         db.execSQL("insert into d_order_detail(s_order_detail_id,s_food_id,s_food_name,s_food_describe,s_food_price,s_food_num,s_food_img)"+" values(?,?,?,?,?,?,?)",
-                new Object[]{"3","1","东北麻辣烫","不吃后悔的麻辣烫","19.49","10",FoodImg1});
+                new Object[]{"3","1","东北麻辣烫","不吃后悔的麻辣烫","19.49","10",FoodImg});
 
         db.execSQL("drop table if exists d_comment");//如果这表存在则删除
         //评论id，评论顾客id，评论商家id，评论内容，评论时间，评论满意度，评论图片

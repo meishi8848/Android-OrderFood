@@ -126,4 +126,8 @@ public class FileImgUntil {
         FileImgUntil.saveBitmapAsync(bitmapDef,path);//保存图片
     }
 
+    public static void saveSystemImgToPath(Bitmap bitmap,String path){
+        FileImgUntil.saveBitmapAsync(bitmap,path);//保存图片
+    }
+
 }

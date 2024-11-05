@@ -75,7 +75,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="收获地址："
+            android:text="收货地址："
             android:textStyle="bold"
             android:layout_marginBottom="5dp"/>
 

@@ -82,6 +82,7 @@
         android:background="@color/white">
 
         <ImageView
+            android:id="@+id/user_buy_preview"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/tb"

@@ -1,5 +1,6 @@
 package com.example.orderfood.activity.user;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import com.example.orderfood.Bean.BossBean;
 import com.example.orderfood.R;
+import com.example.orderfood.activity.user.dialog.UserBuyFoodPreviewDialog;
 import com.example.orderfood.activity.user.dialog.UserPayOrderDialog;
 import com.example.orderfood.activity.user.frament.UserBuyFoodFragment;
 import com.example.orderfood.activity.user.frament.UserReadBossCommentFragment;
@@ -72,6 +74,8 @@ public class ManageUserBuyActivity extends AppCompatActivity {
         TextView Des=findViewById(R.id.user_buy_bossDes);
         Des.setText("简介:"+boss.getB_Des());
 
+        ImageView imgPreview=findViewById(R.id.user_buy_preview);
+
         //实现显示数量
         TextView sumPrice=this.findViewById(R.id.user_buy_sumPrice);
         sumPrice.setText("0");
@@ -79,6 +83,28 @@ public class ManageUserBuyActivity extends AppCompatActivity {
         //点击结算，转到结算页面
         TextView foodDetail=this.findViewById(R.id.user_buy_foodDetail);
         Button pay=this.findViewById(R.id.user_buy_pay);
+
+        imgPreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String foodDetailT=foodDetail.getText().toString();
+                JSONArray jsonArray=JSONArray.parseArray(foodDetailT);
+                List<JSONObject> FoodList=new ArrayList<>();//存放购买商品的列表
+                for(Object o:jsonArray){
+                    JSONObject temp= JSONObject.parseObject(o.toString());
+                    if(!temp.get("num").equals("0")){
+                        FoodList.add(temp);
+                    }
+                }
+                if(foodDetailT.isEmpty()){
+                    Toast.makeText(ManageUserBuyActivity.this, "未选择商品", Toast.LENGTH_SHORT).show();
+                }else if(FoodList.size()==0){
+                    Toast.makeText(ManageUserBuyActivity.this, "未选择商品", Toast.LENGTH_SHORT).show();
+                }else{
+                    UserBuyFoodPreviewDialog userBuyFoodPreviewDialog=new UserBuyFoodPreviewDialog(ManageUserBuyActivity.this,boss.getB_Id());
+                }
+            }
+        });
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

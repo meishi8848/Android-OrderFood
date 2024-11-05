@@ -80,7 +80,11 @@ public class CommentListAdapter extends ArrayAdapter<CommentBean> {
         time.setText(temp.getCommentTime());
 
         ImageView imgFood=convertView.findViewById(R.id.comment_img_food);
-        imgFood.setImageBitmap(BitmapFactory.decodeFile(temp.getCommentImg()));
+        if(temp.getCommentImg().equals("")){
+            imgFood.setVisibility(View.GONE);
+        }else{
+            imgFood.setImageBitmap(BitmapFactory.decodeFile(temp.getCommentImg()));
+        }
 
         //下面被注释的代码可以在用户评论模块用到，暂时不删
 

@@ -1,6 +1,8 @@
 package com.example.orderfood.Bean;
 
-public class AddressBean {
+import java.io.Serializable;
+
+public class AddressBean implements Serializable {
 
     private String addressId;
     private String customerId;

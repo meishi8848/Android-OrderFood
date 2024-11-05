@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bac"
+    tools:context=".activity.user.ManageUserUpdateMesActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/user_manage_updateMes_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="修改个人信息"
+        app:titleTextColor="@color/white"
+        android:background="@color/ThemeRed"
+        app:navigationIcon="@drawable/back"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center_horizontal|center_vertical">
+
+            <ImageView
+                android:id="@+id/user_manage_updateMes_head"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:src="@drawable/upimg"
+                android:layout_marginTop="45dp">
+            </ImageView>
+
+            <EditText
+                android:id="@+id/user_manage_updateMes_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入昵称"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/circle_background"
+                android:padding="10dp"
+                />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/circle_background"
+                >
+
+                <RadioButton
+                    android:id="@+id/user_manage_updateMes_sex_man"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="男"
+                    android:layout_weight="1"
+                    />
+
+                <RadioButton
+                    android:id="@+id/user_manage_updateMes_sex_woman"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="女"
+                    android:layout_weight="1"
+                    />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/user_manage_updateMes_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入家庭住址"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="10dp"
+
+                android:gravity="top"
+                android:minLines="3"
+                android:maxLines="3"
+                android:scrollbars="vertical"
+                android:background="@drawable/circle_background"
+                android:padding="10dp"
+                />
+
+            <EditText
+                android:id="@+id/user_manage_updateMes_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入联系方式"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/circle_background"
+                android:padding="10dp"
+                />
+
+            <Button
+                android:id="@+id/user_manage_updateMes_confirmButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/ThemeRed"
+                android:text="确认更改"
+                android:textColor="#FFFFFF"
+                android:foreground="?android:attr/selectableItemBackground"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

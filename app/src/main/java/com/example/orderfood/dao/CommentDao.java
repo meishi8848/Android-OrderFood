@@ -9,8 +9,11 @@ import com.example.orderfood.Bean.FoodBean;
 import com.example.orderfood.db.DBUntil;
 import com.example.orderfood.until.Tools;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class CommentDao {
 
@@ -44,7 +47,7 @@ public class CommentDao {
 
             list.add(commentBean);
         }
-
+        cursor.close();
         return list;
     }
 
@@ -57,12 +60,38 @@ public class CommentDao {
         String sql="SELECT avg(s_comment_score) as score FROM d_comment WHERE s_comment_boss_id=?";
         Cursor rs=db.rawQuery(sql,new String[]{account});
         if(rs.moveToNext()){
-            String result=Tools.getResultString(rs,"score");
-            if(result==null)
-                return "0";
-            return result;
+            @SuppressLint("Range") double result = rs.getDouble(rs.getColumnIndex("score"));
+            rs.close();
+            return String.format("%.1f", result);
         }
+        rs.close();
         return "0";
+    }
+
+    /**
+     * 评论内容
+     * @param account
+     * @param bossId
+     * @param review
+     * @param score
+     * @param img
+     * @return
+     */
+    public static boolean InsertComment(String account,String bossId,String review,String score,String img){
+        String id= UUID.randomUUID().toString().replace("-","");
+
+        Date date1=new Date();
+        SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time=sdf1.format(date1);
+
+        try{
+            db.execSQL("insert into d_comment(s_comment_id,s_comment_customer_id,s_comment_boss_id,s_comment_content,s_comment_time,s_comment_score,s_comment_img)"+" values(?,?,?,?,?,?,?)",
+                    new Object[]{id,account,bossId,review,time,score,img});
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+
     }
 
 }

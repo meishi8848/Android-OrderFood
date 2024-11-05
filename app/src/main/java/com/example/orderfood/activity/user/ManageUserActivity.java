@@ -17,6 +17,9 @@ import com.example.orderfood.R;
 import com.example.orderfood.activity.boss.ManageBossAddFoodActivity;
 import com.example.orderfood.activity.boss.frament.ManageMyBossFragment;
 import com.example.orderfood.activity.user.frament.ManageHomeUserFragment;
+import com.example.orderfood.activity.user.frament.ManageMyUserFragment;
+import com.example.orderfood.activity.user.frament.UserFinishedOrderFragment;
+import com.example.orderfood.activity.user.frament.UserWaitingOrderFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -44,7 +47,7 @@ public class ManageUserActivity extends AppCompatActivity {
             transaction.replace(R.id.user_manage_frame,new ManageHomeUserFragment());
             transaction.commit();
         }else{
-            transaction.replace(R.id.user_manage_frame,new ManageMyBossFragment());
+            transaction.replace(R.id.user_manage_frame,new ManageMyUserFragment());
             transaction.commit();
         }
 
@@ -59,14 +62,13 @@ public class ManageUserActivity extends AppCompatActivity {
                 if(id==R.id.user_manage_bottom_menu_home){
                     transaction1.replace(R.id.user_manage_frame,new ManageHomeUserFragment());
                 }
+                //打开一个页面，上面全是待处理的订单
                 if(id==R.id.user_manage_bottom_menu_waitReceiving){
                     //跳转到新的界面
-                    Intent intent=new Intent(ManageUserActivity.this, ManageBossAddFoodActivity.class);
-                    startActivity(intent);
-                    return true;
+                    transaction1.replace(R.id.user_manage_frame,new UserWaitingOrderFragment());
                 }
                 if(id==R.id.user_manage_bottom_menu_my){
-                    transaction1.replace(R.id.user_manage_frame,new ManageMyBossFragment());
+                    transaction1.replace(R.id.user_manage_frame,new ManageMyUserFragment());
                 }
                 transaction1.commit();
 
@@ -74,4 +76,19 @@ public class ManageUserActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void showOrder(){
+        FragmentManager fragment_container=this.getSupportFragmentManager();
+        FragmentTransaction transaction=fragment_container.beginTransaction();
+        transaction.replace(R.id.user_manage_frame,new UserFinishedOrderFragment());
+        transaction.commit();
+    }
+
+    public void showMy(){
+        FragmentManager fragment_container=this.getSupportFragmentManager();
+        FragmentTransaction transaction=fragment_container.beginTransaction();
+        transaction.replace(R.id.user_manage_frame,new ManageMyUserFragment());
+        transaction.commit();
+    }
+
 }

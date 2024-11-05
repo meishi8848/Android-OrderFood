@@ -13,6 +13,27 @@
         android:theme="@style/Theme.OrderFood"
         tools:targetApi="31">
         <activity
+            android:name=".activity.user.ManageUserAddAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.user.ManageUserUpdateAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.user.ManageUserAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.user.ManageUserCommentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.user.ManageUserUpdateMesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.user.ManageUserUpdatePwdActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.user.UserPayOrderActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.user.ManageUserBuyActivity"
             android:exported="false" />
         <activity

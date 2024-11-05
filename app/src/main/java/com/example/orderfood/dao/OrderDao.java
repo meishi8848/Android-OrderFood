@@ -34,6 +34,7 @@ public class OrderDao {
 
             orderDetailBeanList.add(orderDetailBean);
         }
+        cursor.close();
         return orderDetailBeanList;
     }
 
@@ -56,6 +57,7 @@ public class OrderDao {
 
             orderBeanList.add(orderBean);
         }
+        cursor.close();
         return orderBeanList;
     }
 
@@ -79,6 +81,53 @@ public class OrderDao {
 
             orderBeanList.add(orderBean);
         }
+        cursor.close();
+        return orderBeanList;
+    }
+
+    public static List<OrderBean> queryAllOrdersByStaAndUserId(String account,String sta){
+        String sql="SELECT * FROM d_order WHERE s_customer_id=? AND s_order_state=? ORDER BY strftime('%Y-%m-%d %H:%M:%S',s_order_time) DESC";
+        String data[]={account,sta};
+        Cursor cursor=db.rawQuery(sql,data);
+        List<OrderBean> orderBeanList=new ArrayList<>();
+        while(cursor.moveToNext()){
+
+            String order_idT=Tools.getResultString(cursor,"s_order_id");
+            String order_timeT=Tools.getResultString(cursor,"s_order_time");
+            String boss_idT=Tools.getResultString(cursor,"s_boss_id");
+            String customer_idT=Tools.getResultString(cursor,"s_customer_id");
+            String detail_idT=Tools.getResultString(cursor,"s_order_detail_id");
+            String order_stateT=Tools.getResultString(cursor,"s_order_state");
+            String order_addressT=Tools.getResultString(cursor,"s_order_address");
+
+            OrderBean orderBean=new OrderBean(order_idT,order_timeT,boss_idT,customer_idT,order_stateT,order_addressT,detail_idT);
+
+            orderBeanList.add(orderBean);
+        }
+        cursor.close();
+        return orderBeanList;
+    }
+
+    public static List<OrderBean> queryFinishedOrdersByStaAndUserId(String account,String sta){
+        String sql="SELECT * FROM d_order WHERE s_customer_id=? AND s_order_state!=? ORDER BY strftime('%Y-%m-%d %H:%M:%S',s_order_time) DESC";
+        String data[]={account,sta};
+        Cursor cursor=db.rawQuery(sql,data);
+        List<OrderBean> orderBeanList=new ArrayList<>();
+        while(cursor.moveToNext()){
+
+            String order_idT=Tools.getResultString(cursor,"s_order_id");
+            String order_timeT=Tools.getResultString(cursor,"s_order_time");
+            String boss_idT=Tools.getResultString(cursor,"s_boss_id");
+            String customer_idT=Tools.getResultString(cursor,"s_customer_id");
+            String detail_idT=Tools.getResultString(cursor,"s_order_detail_id");
+            String order_stateT=Tools.getResultString(cursor,"s_order_state");
+            String order_addressT=Tools.getResultString(cursor,"s_order_address");
+
+            OrderBean orderBean=new OrderBean(order_idT,order_timeT,boss_idT,customer_idT,order_stateT,order_addressT,detail_idT);
+
+            orderBeanList.add(orderBean);
+        }
+        cursor.close();
         return orderBeanList;
     }
 
@@ -88,6 +137,30 @@ public class OrderDao {
 
         try{
             db.execSQL(sql,new String[]{newStatus,orderId});
+            return true;
+        }catch (SQLException e){
+            return false;
+        }
+    }
+
+    /**
+     * 实现添加订单
+     * @param orderId
+     * @param time
+     * @param userId
+     * @param bossId
+     * @param status
+     * @param address
+     * @param orderDetailId
+     * @return
+     */
+    public static boolean InsertOrder(String orderId, String time,String userId,String bossId,String status,String address,String orderDetailId){
+
+        String sql="insert into d_order(s_order_id,s_order_time,s_customer_id,s_boss_id,s_order_state,s_order_address,s_order_detail_id)"+
+                "values(?,?,?,?,?,?,?)";
+
+        try{
+            db.execSQL(sql,new String[]{orderId, time,userId,bossId,status,address,orderDetailId});
             return true;
         }catch (SQLException e){
             return false;
@@ -113,7 +186,13 @@ public class OrderDao {
 
             orderBeanList.add(orderBean);
         }
+        cursor.close();
         return orderBeanList;
+    }
+
+    public static void saveOrderDetail(OrderDetailBean orderDetailBean){
+        db.execSQL("insert into d_order_detail(s_order_detail_id,s_food_id,s_food_name,s_food_describe,s_food_price,s_food_num,s_food_img)"+" values(?,?,?,?,?,?,?)",
+                new Object[]{orderDetailBean.getOrder_detail_id(),orderDetailBean.getFood_id(),orderDetailBean.getFood_name(),orderDetailBean.getFood_des(),orderDetailBean.getFood_price(),orderDetailBean.getFood_num(),orderDetailBean.getFood_img()});
     }
 
 }

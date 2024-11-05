@@ -2,6 +2,7 @@ package com.example.orderfood.activity.boss.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
@@ -16,8 +17,6 @@ import androidx.annotation.NonNull;
 
 import com.example.orderfood.Bean.FoodBean;
 import com.example.orderfood.R;
-import com.example.orderfood.activity.boss.ManageBossActivity;
-import com.example.orderfood.activity.boss.ManageBossAddFoodActivity;
 import com.example.orderfood.activity.boss.ManageBossUpdateFoodActivity;
 import com.example.orderfood.dao.FoodDao;
 

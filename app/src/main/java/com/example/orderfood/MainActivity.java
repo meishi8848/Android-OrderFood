@@ -22,6 +22,8 @@ import com.example.orderfood.activity.boss.ManageBossFinishOrderActivity;
 import com.example.orderfood.activity.boss.ManageBossOrderWaitingActivity;
 import com.example.orderfood.activity.boss.RegisterBossActivity;
 import com.example.orderfood.activity.user.ManageUserActivity;
+import com.example.orderfood.activity.user.ManageUserAddressActivity;
+import com.example.orderfood.activity.user.ManageUserCommentActivity;
 import com.example.orderfood.activity.user.RegisterUserActivity;
 import com.example.orderfood.dao.AdminDao;
 import com.example.orderfood.db.DBUntil;
@@ -42,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         DBUntil dbUntil=new DBUntil(this);
         DBUntil.con = dbUntil.getWritableDatabase();
 
-        Intent intent=new Intent(MainActivity.this, ManageUserActivity.class);
-        startActivity(intent);
+//        Intent intent=new Intent(MainActivity.this, ManageUserAddressActivity.class);
+//        startActivity(intent);
 
         //实现数据账号共享
         SharedPreferences sharedPreferences=getSharedPreferences("data", Context.MODE_PRIVATE);

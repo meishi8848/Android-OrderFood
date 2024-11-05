@@ -9,6 +9,7 @@ import com.example.orderfood.until.Tools;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class AddressDao {
 
@@ -32,7 +33,58 @@ public class AddressDao {
 
              list.add(addressBean);
          }
+         rs.close();
          return list;
+    }
+
+    /**
+     * 修改收货地址
+     * @param id
+     * @param name
+     * @param address
+     * @param phone
+     * @return
+     */
+    public static boolean updateAddress(String id,String name,String address,String phone){
+        try{
+            db.execSQL("UPDATE d_receiveAddress set s_customer_name=?,s_customer_address=?,s_customer_phone=? WHERE s_address_id=?",new String[]{name,address,phone,id});
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    /**
+     * 添加收货地址
+     * @param id
+     * @param name
+     * @param address
+     * @param phone
+     * @return
+     */
+    public static boolean addAddress(String id,String name,String address,String phone){
+        try{
+            String uuid= UUID.randomUUID().toString().replace("-","");
+            db.execSQL("INSERT INTO d_receiveAddress(s_address_id,s_customer_id,s_customer_name,s_customer_address,s_customer_phone)"+"VALUES(?,?,?,?,?)",
+                    new String[]{uuid,id,name,address,phone});
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    /**
+     * 删除收货地址
+     * @param id
+     * @return
+     */
+    public static boolean deleteAddressById(String id){
+        try{
+            db.execSQL("DELETE FROM d_receiveAddress WHERE s_address_id=?",new String[]{id});
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
 }

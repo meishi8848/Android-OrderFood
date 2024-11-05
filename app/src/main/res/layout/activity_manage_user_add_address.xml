@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bac"
+    tools:context=".activity.user.ManageUserAddAddressActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/user_manage_addMyAddress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="添加收货地址"
+        app:titleTextColor="@color/white"
+        android:background="@color/ThemeRed"
+        app:navigationIcon="@drawable/back"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center_horizontal|center_vertical">
+
+            <EditText
+                android:id="@+id/user_manage_addMyAddress_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入收货人姓名"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/circle_background"
+                android:padding="10dp"
+                />
+
+            <EditText
+                android:id="@+id/user_manage_addMyAddress_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入收货地址"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:inputType="textMultiLine"
+                android:minLines="5"
+                android:scrollbars="vertical"
+                android:background="@android:drawable/edit_text"
+                android:gravity="top"
+                />
+
+            <EditText
+                android:id="@+id/user_manage_addMyAddress_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入收货人联系方式"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/circle_background"
+                android:padding="10dp"
+                android:inputType="number"
+                />
+
+            <Button
+                android:id="@+id/user_manage_addMyAddress_confirmButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/ThemeRed"
+                android:text="添加"
+                android:textColor="#FFFFFF"
+                android:foreground="?android:attr/selectableItemBackground"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

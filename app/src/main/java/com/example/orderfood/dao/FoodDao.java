@@ -40,7 +40,7 @@ public class FoodDao {
             foodBean.setFoodImg(img_food);
             list.add(foodBean);
         }
-
+        cursor.close();
         return list;
     }
 
@@ -64,7 +64,7 @@ public class FoodDao {
             foodBean.setFoodImg(img_food);
             list.add(foodBean);
         }
-
+        cursor.close();
         return list;
     }
 
@@ -90,7 +90,7 @@ public class FoodDao {
             foodBean.setFoodImg(img_food);
             list.add(foodBean);
         }
-
+        cursor.close();
         return list;
     }
 
@@ -116,7 +116,7 @@ public class FoodDao {
             foodBean.setFoodImg(img_food);
             list.add(foodBean);
         }
-
+        cursor.close();
         return list;
     }
 
@@ -140,7 +140,7 @@ public class FoodDao {
         }else{
             return null;
         }
-
+        cursor.close();
         return foodBean;
     }
 
@@ -152,7 +152,7 @@ public class FoodDao {
     public static int getMouthSaleNum(String Foodid){
 
         Cursor rs=db.rawQuery("SELECT * FROM d_order " +
-                "WHERE strftime('%Y-%m', s_order_time) = strftime('%Y-%m','now');",null);
+                "WHERE s_order_time >= date('now', '-30 days');",null);
         List<String> list=new ArrayList<>();
         while(rs.moveToNext())
         {
@@ -164,6 +164,7 @@ public class FoodDao {
         {
             saleNum=saleNum+getOrderDetailByOrderIdAndFoodId(s,Foodid);
         }
+        rs.close();
         return saleNum;
     }
 
@@ -184,6 +185,7 @@ public class FoodDao {
             @SuppressLint("Range") int tm=rs.getInt(rs.getColumnIndex("s_food_num"));
             return tm;
         }
+        rs.close();
         return 0;
     }
 

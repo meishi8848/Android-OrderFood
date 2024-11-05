@@ -5,10 +5,13 @@ plugins {
 android {
     namespace = "com.example.orderfood"
     compileSdk = 34
+    aaptOptions.cruncherEnabled=false
+    aaptOptions.useNewCruncher=false
+
 
     defaultConfig {
         applicationId = "com.example.orderfood"
-        minSdk = 34
+        minSdk = 31
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -36,6 +39,7 @@ android {
 
 dependencies {
 
+    implementation("com.google.android.material:material:1.4.0")
     implementation("com.github.bumptech.glide:glide:4.12.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     implementation(libs.legacy.support.v4)

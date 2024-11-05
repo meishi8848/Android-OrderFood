@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.orderfood.Bean.BossBean;
 import com.example.orderfood.Bean.FoodBean;
+import com.example.orderfood.MainActivity;
 import com.example.orderfood.R;
 import com.example.orderfood.activity.boss.ManageBossActivity;
 import com.example.orderfood.activity.boss.ManageBossCommentActivity;
@@ -76,7 +77,8 @@ public class ManageMyBossFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.finish();
+                Intent intent=new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
 
